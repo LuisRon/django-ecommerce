@@ -17,7 +17,7 @@
 
 
         <!-- CSS -->
-        
+
         <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,9 +33,9 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
-	
 
-	 <!-- Bootstrap Max CDN --> 
+
+	 <!-- Bootstrap Max CDN -->
 
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
@@ -43,16 +43,16 @@
 
     </head>
 
-    
+
 
 
     <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
 
 
-        <a class="navbar-brand main-heading text-white" href="{% url 'store' %}"> 
-                
-        &nbsp; &nbsp; Edenthought 
-        
+        <a class="navbar-brand main-heading text-white" href="{% url 'store' %}">
+
+        &nbsp; &nbsp; Edenthought
+
         </a>
 
 
@@ -69,30 +69,36 @@
 
     </button>
 
-    
+
         <div class="collapse navbar-collapse" id="navbarCollapse">
-                
+
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
                 <li class="nav-item dropdown">
-                    
+
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    
+
                         Categories
-                    
+
                     </a>
-                    
+
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                         <li>
-                            
+
                             <a class="dropdown-item" href="{% url 'store' %}"> All </a>
-                        
+
                         </li>
-                    
-        
-                    
+
+                        {% for category in all_categories %}
+                        <li>
+                            <a class="dropdown-item" href="{{category.get_absolute_url}}"> {{category.name | capfirst}} </a>
+                        </li>
+                        {% endfor%}
+
+
+
                     </ul>
 
                 </li>
@@ -103,12 +109,12 @@
 
 
         <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-            
+
             <ul class="navbar-nav ms-auto">
 
 
                 <li class="nav-item">
-            
+
                     <a class="btn btn-alert navbar-btn text-white" type="button"  href="/"> Register </a>
 
                 </li>
@@ -126,8 +132,8 @@
 
                 <li class="nav-item">
 
-                    <a type="button" role="button" href="/" class="btn btn-outline-secondary"> 
-                    
+                    <a type="button" role="button" href="/" class="btn btn-outline-secondary">
+
 
 
                         <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
@@ -138,11 +144,11 @@
                 </li>
 
                 &nbsp; &nbsp; &nbsp;
-        
+
 
             </ul>
 
-        
+
         </div>
 
 
@@ -152,18 +158,18 @@
     <body>
 
 
-        {% block content %} 
-        
-        
+        {% block content %}
 
 
 
 
 
-            
+
+
+
         {% endblock %}
-    
-        
+
+
 
 
     </body>
