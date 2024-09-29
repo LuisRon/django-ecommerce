@@ -33,6 +33,27 @@ class Cart():
         self.session.modified = True
 
 
+    def delete(self, product):
+
+        product_id = str(product)
+
+        if product_id in self.cart:
+            del self.cart[product_id]
+
+        self.session.modified = True
+
+
+    def update(self, product, qty):
+
+        product_id = str(product)
+        product_quantity = qty
+
+        if product_id in self.cart:
+            self.cart[product_id]['qty'] = product_quantity
+
+        self.session.modified = True
+
+
     def __len__(self):
 
         return sum(item['qty'] for item in self.cart.values())
@@ -44,7 +65,9 @@ class Cart():
 
         products = Product.objects.filter(id__in=all_product_ids)
 
-        cart = self.cart.copy()
+        import copy
+
+        cart = copy.deepcopy(self.cart)
 
         for product in products:
             cart[str(product.id)]['product'] = product
