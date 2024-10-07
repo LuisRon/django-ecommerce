@@ -152,3 +152,10 @@ EMAIL_USE_TLS = 'True'
 
 EMAIL_HOST_USER = 'onetime96@gmail.com' # Enter your gmail address
 EMAIL_HOST_PASSWORD = '' # Enter your password
+
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+# # engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={'check_same_thread': False}) this is for sqlite3
+# engine = create_engine(os.getenv('SQLALCHEMY_DATABASE_URL'))
