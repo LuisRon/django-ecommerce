@@ -12,6 +12,8 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+from django.contrib import messages
+
 
 def register(request):
 
@@ -112,7 +114,17 @@ def my_login(request):
 
 def user_logout(request):
 
-    auth.logout(request)
+    try:
+        for key in list(request.session.keys()):
+            if key == 'session_key':
+                continue
+            else:
+                del request.session[key]
+
+    except KeyError:
+        pass
+
+    messages.success(request, 'Logout success!')
 
     return redirect('store')
 
