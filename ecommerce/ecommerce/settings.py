@@ -164,3 +164,8 @@ EMAIL_HOST_PASSWORD = os.getenv('PASSWORD') # Enter your password
 
 # # engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={'check_same_thread': False}) this is for sqlite3
 # engine = create_engine(os.getenv('SQLALCHEMY_DATABASE_URL'))
+
+
+
+# Allow Paypal Popups
+SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popus'
